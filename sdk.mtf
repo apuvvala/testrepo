@@ -1,0 +1,8 @@
+# This is the SDK template file for simulinktest_demos
+# Copyright 2014 The MathWorks, Inc.
+
+derived/glnxa64/toolbox/simulinktest/simulinktestdemos/[DIRS]/[FILES]
+derived/win64/toolbox/simulinktest/simulinktestdemos/[DIRS]/[FILES]
+
+# needed by test/toolbox/simulinktest/simulinktestdemos/Makefile
+toolbox/simulinktest/simulinktestdemos/internal/Makefile

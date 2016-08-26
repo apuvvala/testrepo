@@ -1,0 +1,172 @@
+%% Extend Model Coverage of a Test Suite
+%
+% This example shows you how to 
+% extend coverage of a test suite beyond an initial 
+% test case. You start by measuring coverage for the initial
+% test which uses timeseries data. You save the results of the
+% initial coverage measurement, then use Simulink(R) Design Verifier(TM) to
+% add new test cases to the test manager in Simulink(R) Test(TM). You then
+% simulate the expanded suite of tests and measure cumulative coverage.
+%
+% This example builds on the workflow from another example,
+% <matlab:showdemo('sltestRequirementsTestingAutopilotDemo') Requirements-Based Testing for Model Development>
+
+%% Paths and Example Files
+%
+% Enter the following to store paths and filenames for the example and set
+% the current folder.
+%
+filePath = fullfile(matlabroot,'toolbox','simulinktest','simulinktestdemos');
+rollModel = 'RollAutopilotRevised';
+testHarness = 'RollReference_LoggedDataTest';
+testFile = 'RollRefTest.mldatx';
+coverageTestFile = 'RollRefCumulativeCovTest.mldatx';
+
+%% Background and Workflow for the Example
+% 
+% Tests commonly use timeseries
+% inputs to exercise the model or a particular model component. Timeseries
+% inputs can include logged data from simulation or from physical measurements.
+% Timeseries cover important simulation cases, but do not necessarily
+% achieve full model coverage. If you have Simulink(R) Test(TM) and
+% Simulink(R) Design Verifier(TM), you can generate test cases to achieve
+% additional coverage objectives and increase cumulative
+% model coverage.
+%
+% This example uses an updated version of the |Roll Reference| subsystem, 
+% which has a test case and test harness for a timeseries input. You
+% measure model coverage with the timeseries input, generate additional
+% test cases, then run the suite of test cases and measure cumulative model
+% coverage. The |Roll Reference| subsystem is one component of an autopilot control
+% system. The subsystem controls the reference angle of the aircraft's roll
+% axis.
+
+%% The Model and Timeseries Test Harness
+%
+% The model contains a test harness |RollReference_LoggedDataTest|, which
+% tests the component using timeseries data from the base workspace:
+%
+% * RollRefInputPhi
+% * RollRefInputAP
+% * RollRefInputTK
+%
+% The test harness collects coverage measurements for the
+% |Roll Reference| subsystem and saves coverage results in a
+% cvdata object |RollRefCovData|. You can view coverage settings by
+% selecting *Analysis > Coverage > Settings*.
+
+%% Measure Model Coverage and Save Coverage Results
+% 
+% Set the current folder to a writable location. Open the test file:
+%
+%   open(fullfile(filePath,testFile))
+
+%%
+%
+% <<autopilot_coverage_topup_timeseries_testcase_initial.png>>
+%
+%%
+% In the *Test Browser* pane,
+% expand the *Logged Data and Coverage* test suite. 
+% Highlight the |RollReference Timeseries Input| test
+% case and click *Run* to execute the test. The coverage report
+% appears after simulation completes. The report shows that the tests
+% achieve partial coverage for the Roll Reference subsystem:
+%
+% * Decision coverage: 80%
+% * Condition coverage: 70%
+% * MCDC 25%
+%
+% In the base workspace, |rollRefCovData| stores the coverage results. 
+% The coverage result saves to a CVT file |RollRefInitialCov|.
+
+%% Generate Tests to Increase Model Coverage
+%
+% You can use Simulink(R) Design Verifier(TM) to generate additional test
+% inputs, and create new test cases for missing coverage data. For more
+% information, see
+% <matlab:helpview(fullfile(docroot,'sldv','ug','generate-test-cases-for-missing-coverage-data.html')) Generate Test Cases for Missing Coverage Data>.
+
+%% 
+% 
+% # In the test browser, highlight the RollReference Timeseries Input test
+% case. Expand the *System Under Test* in the right pane. Expand *Test
+% Harness* and click the arrow next to the *Harness* field to open the test
+% harness.
+% # In the |RollReference_LoggedDataTest| test
+% harness, test case generation ignores objectives satisfied
+% in |RollRefInitialCov|. You control
+% this in the *Design Verifier > Test Generation* configuration
+% parameters, which you can view by selecting *Analysis > Design Verifier >
+% Options*.
+% # In the top level of the test harness, right-click 
+% the Roll Reference subsystem and select
+% *Design Verifier > Generate Tests for Subsystem*.
+% Test case generation executes. The Simulink Design Verifier Results
+% Summary window opens, and the test case generation report opens.
+
+%%
+%
+% <<autopilot_coverage_results_summary_window.png>>
+
+%% Create Test Cases in the Test Manager
+%
+% # In the Design Verifier Results Summary window, click *Export test cases to
+% Simulink Test*.
+% # Use the same test harness for the additional test cases. In the
+% *Harness Selection* dialog box, select |RollReference_LoggedDataTest|.
+% Click *OK*.
+% # In the test manager, a new test file |RollAutopilotRevised_test| 
+% appears. The test file contains a new test case that uses the inputs generated by
+% Simulink(R) Design Verifier(TM) for model coverage.
+% # Close the test harness and the model.
+
+%%
+% <<autopilot_coverage_new_testcases.png>>
+
+%% Configure the Test for Cumulative Coverage Collection
+% 
+% The test file |RollRefCumulativeCovTest| has been configured for
+% cumulative coverage collection. Open the test file.
+%
+%   open(fullfile(filePath,coverageTestFile))
+
+%%
+%
+% <<autopilot_coverage_combined_suite.png>>
+
+%%
+% In addition to the newly-created test case, the |RollRefCumulativeCovTest| test file
+%
+% * Contains a copy of the timeseries test case from the |RollRefTest| test file.
+% * Contains setup callbacks in the test suite that open the model and test
+% harness, and initialize a cumulative coverage variable.
+% * Contains cleanup callbacks in the test suite that create the report and close the model.
+% * Contains a cleanup callback in each test case that aggregates the coverage information
+% after each test cases executes.
+%
+
+%% Run the Expanded Test Suite
+%
+% In |RollRefCumulativeCovTest|, highlight |Cumulative coverage test suite|
+% and click *Run*. The test suite generates a coverage report for the
+% cumulative results and for the initial timeseries result.
+
+%%
+%
+% The coverage report shows the expanded coverage for the combined test, and the initial
+% coverage for the timeseries test. The additional test case
+% completes the model coverage in the test suite.
+%
+% * Decision: 100%
+% * Condition: 100%
+% * MCDC: 100%
+%
+%%
+%
+% <<autopilot_coverage_combined_report.png>>
+
+%%
+clear coverageTestFile filePath reqDoc rollModel testFile testHarness topModel;
+
+

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--    -->
+<!-- Copyright 2015 The MathWorks, Inc. -->
+<demos>
+  <name>Simulink Test</name>
+  <type>simulink</type>
+  <icon>$toolbox/matlab/icons/simulinkicon.gif</icon>
+  <description isCdata="no">
+    <p>Simulink Test&#174; helps you develop, manage, and execute simulation-based tests. </p>
+  </description>
+
+  <!-- Application and Workflow Examples -->
+  <demosection>
+    <label>Applications and Workflows</label>
+    <demoitem>
+      <label>Requirements-based Testing for Controller Development</label>
+      <source>sltestRequirementsTestingAutopilotDemo</source>
+      <dependency>Simulink Design Verifier</dependency>
+      <dependency>Simulink Verification and Validation</dependency>
+      <type>M-file</type>
+    </demoitem>
+
+    <demoitem>
+      <label>Create and Execute Tests to Increase Model Coverage </label>
+      <source>sltestCoverageIncreaseAPDemo</source>
+      <dependency>Simulink Design Verifier</dependency>
+      <dependency>Simulink Verification and Validation</dependency>
+      <type>M-file</type>
+    </demoitem>
+    
+    <demoitem>
+      <label>Code Generation Verification Workflow with Simulink Test</label>
+      <source>sltestFuelRateControlCGVDemo</source>
+      <dependency>Stateflow</dependency>
+      <dependency>Embedded Coder</dependency>
+      <type>M-file</type>
+    </demoitem>
+
+    <demoitem>
+      <label>Parametric Sweep for a Simscape Thermal Model</label>
+      <source>sltestProjectorFanSpeedExamplePage</source>
+      <dependency>Simscape</dependency>
+      <type>M-file</type>
+    </demoitem>
+    
+    <demoitem>
+        <label>Real-Time Tests for a Projector Controller Using Verify</label>
+        <source>sltestProjectorCtrlRealTimeExample</source>
+        <dependency>Simulink Real-Time</dependency>
+        <type>M-file</type>
+    </demoitem>
+    
+  </demosection>
+
+
+  <!-- Test Harness Examples -->
+  <demosection>
+    <label>Test Harness</label>
+    
+    <demoitem>
+      <label>Synchronizing Data between a Model and a Test Harness</label>
+      <source>sltestPushRebuildIntroduction</source>
+      <type>M-file</type>
+    </demoitem>  
+
+    <demoitem>
+        <label>Testing a Library and Linked Block</label>
+        <source>sltestHeatpumpLibraryTestDemo</source>
+        <type>M-file</type>
+    </demoitem>
+    
+    <demoitem>
+        <label>Test Models that use Export Functions for AUTOSAR-Compliant Code</label>
+        <source>sltestAutosarTestHarnessDemo</source>
+        <type>M-file</type>
+    </demoitem>
+    
+    <demoitem>
+      <label>Using Custom Source and Sink Blocks</label>
+      <source>sltestCustomSourceSinkDemo</source>
+      <type>M-file</type>
+    </demoitem>  
+
+    <demoitem>
+      <label>Switching between Harness Configurations</label>
+      <source>sltestSwitchHarnessConfigurationIntroduction</source>
+      <type>M-file</type>
+    </demoitem>  
+  </demosection>
+
+  <!-- Test Sequence Examples -->
+  <demosection>
+    <label>Test Sequence</label>
+
+    <demoitem>
+      <label>Using Waveform Generation Functions</label>
+      <source>sltestTestSequenceSignalGenerationDemo</source>
+      <type>M-file</type>
+    </demoitem>  
+
+    <demoitem>
+      <label>Using When Decomposition to Write Tests</label>
+      <source>sltestTestSequenceUsingWhen</source>
+      <type>M-file</type>
+    </demoitem>  
+
+    <demoitem>
+      <label>Testing Downshift Points of a Transmission Controller</label>
+      <source>sltestTestSequenceIntroduction</source>
+      <type>M-file</type>
+      <dependency>Stateflow</dependency>
+    </demoitem>  
+  </demosection>
+
+  <!-- Test Manager Examples -->
+  <demosection>
+    <label>Test Manager</label>
+    <demoitem>
+      <label>Test Two Simulations for Equivalence</label>
+      <source>sltestSimulationEquivalence</source>
+      <dependency>Embedded Coder</dependency>
+      <type>M-file</type>
+    </demoitem>
+
+    <demoitem>
+      <label>Creating Baseline Tests</label>
+      <source>sltestTestManagerBaselineDemo</source>
+      <type>M-file</type>
+    </demoitem>
+
+    <demoitem>
+      <label>Generating Test Cases from a Model</label>
+      <source>sltestTestManagerCreateTests</source>
+      <type>M-file</type>
+      <dependency>Stateflow</dependency>
+    </demoitem>
+    
+    <demoitem>
+      <label>Generating a Test Results Report</label>
+      <source>sltestTestManagerReportsDemo</source>
+      <type>M-file</type>
+    </demoitem>
+
+    <demoitem>
+      <label>Importing Microsoft Excel Data</label>
+      <source>sltestUsingExcel</source>
+      <type>M-file</type>
+    </demoitem>
+
+    <demoitem>
+      <label>Overriding Model Parameters in a Test Case</label>
+      <source>sltestParameterOverridesDemo</source>
+      <type>M-file</type>
+    </demoitem>
+  </demosection>
+</demos>
+

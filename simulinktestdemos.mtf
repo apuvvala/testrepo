@@ -1,0 +1,18 @@
+# Include scoped path information
+include derived/share/simulinktest_demos.mtf
+
+toolbox/simulinktest/simulinktestdemos/*.slx
+toolbox/simulinktest/simulinktestdemos/*.m
+toolbox/simulinktest/simulinktestdemos/*.png
+toolbox/simulinktest/simulinktestdemos/*.mldatx
+toolbox/simulinktest/simulinktestdemos/*.mat
+toolbox/simulinktest/simulinktestdemos/*.xlsx
+toolbox/simulinktest/simulinktestdemos/html/*.png
+toolbox/simulinktest/simulinktestdemos/demos.xml  #Do not delete
+toolbox/simulinktest/simulinktestdemos/*.txt
+toolbox/simulinktest/simulinktestdemos/*.req
+toolbox/simulinktest/simulinktestdemos/*.docx
+
+# Ship FeaturedExampleProvider to make this product's
+# examples show up in the Simulink Start Page
+toolbox/simulinktest/simulinktestdemos/+slstart/+internal/SimulinkTestFeaturedExampleProvider.m

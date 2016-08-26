@@ -1,0 +1,13 @@
+These detailed requirements correspond to the Simulink Test example model
+sltestProjectorFanSpeedExample.slx
+
+Requirements:
+
+1. Projector temperature shall not exceed 65 degrees C.
+2. The system parameters shall minimize the time to reach lamp activation temperature.
+	2.1. The lamp activates at 45 degrees C.
+	2.2. Lamp activation time shall be tested as follows:
+		2.2.1. The system shall start at ambient temperature.
+		2.2.2. With the fan active, the lamp shall be switched on.
+		2.2.3. The activation time is the time to reach 45 deg. C after the lamp switches on.
+
